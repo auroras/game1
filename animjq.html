@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script> 
+$(document).ready(function(){
+$("#happy").hide();
+$("#sad").hide();
+$("#agreed").hide();
+$("#worried").hide();
+$("div.yes").click(function(){
+	$(this).data('clicked', true);
+	if($('div.no').data('clicked')) {
+		$("#sad").show();
+		$("#agreed").show();
+		$("#happy").hide();
+		$("#worried").hide();
+	}
+	else{
+		$("#sad").show();
+		$("#happy").hide();
+		$("#worried").hide();
+	}
+
+	$("div.no").data('clicked', false);
+});
+$("div.no").click(function(){
+$(this).data('clicked', true);
+if($('div.yes').data('clicked')) {
+    $("#happy").show();
+	$("#sad").hide();
+	$("#agreed").hide();
+	$("#worried").show();
+}
+else{
+	$("#happy").show();
+	$("#sad").hide();
+	$("#agreed").hide();
+	}
+$("div.yes").data('clicked', false);
+});
+$("div.left-side").click(function(){
+	$("#sad").hide();
+	$("#happy").hide();
+	$("#agreed").hide();
+	$("#worried").show();
+	$("div.no").data('clicked', false);
+});
+$("div.right-side").click(function(){
+	$("#happy").hide();
+	$("#sad").hide();
+	$("#worried").hide();
+	$("#agreed").show();
+	$("div.yes").data('clicked', false);
+});
+});
+</script>
+<style>
+	.base{
+		background-image: url("img/exit_BG.png");   
+		background-repeat: no-repeat;
+		width:1200px;
+		height:600px
+	}
+	
+	.left-side{
+		 width:530px;
+		 height:600px;
+		 float:left;
+	}
+	.right-side{
+		 position: fixed;
+		 left:520px;
+		 width:520px;
+		 height:600px;
+	}
+	
+	
+	.yes {
+		position: fixed;
+		top: 450px;
+		left:50px;
+	}
+	
+	.boxes {
+		position: fixed;
+		top: 250px;
+		left:350px;
+		z-index: 99999;
+	}
+	
+     #happy {
+		position: fixed;
+		top: 140px;
+		left:560px;
+		width: 136px;
+		height: 169px;
+		background: url("img/happy.png") 0 0;
+		animation-name: happy-x, happy-y;
+        animation-duration: 1.5s, 1.5s;
+        animation-iteration-count: infinite;
+        animation-timing-function: steps(3), steps(6);
+		
+	}
+	#agreed {
+		position: fixed;
+		top: 140px;
+		left:560px;
+		width: 140px;
+		height: 233px;
+		background: url("img/agreed.png");
+		animation-name: agreed-x, agreed-y;
+        animation-duration: 1.5s, 1.5s;
+        animation-iteration-count: infinite;
+        animation-timing-function: steps(7), steps(4);
+		
+	}
+	#sad {
+		position: fixed;
+		top: 240px;
+		left:325px;	
+		width: 120px;
+		height: 216px;
+		background: url("img/sad.png") 0 0;
+		animation-name: sad-x, sad-y;
+        animation-duration: 1.5s, 1.5s;
+        animation-iteration-count: infinite;
+        animation-timing-function: steps(8), steps(5);
+	}
+	
+	#worried {
+		position: fixed;
+		top: 200px;
+		left:270px;	
+		width: 250px;
+		height: 180px;
+		background: url("img/worried.png");
+		animation-name: worried-y;
+        animation-duration: 1.5s;
+        animation-iteration-count: infinite;
+        animation-timing-function: steps(2);
+	}
+	
+	.no {
+		position: fixed;
+		top: 450px;
+		left:800px;
+	}
+	
+	@keyframes sad-x {
+	100% { background-position-x: -960px; }
+	}
+	@keyframes sad-y {
+		100% { background-position-y: -1080px; }
+	}
+	
+	@keyframes happy-x {
+	100% { background-position-x: -405px; }
+	}
+	@keyframes happy-y {
+		100% { background-position-y: -1014px; }
+	}
+	
+	@keyframes agreed-x {
+	100% { background-position-x: -973px; }
+	}
+	@keyframes agreed-y {
+	100% { background-position-y: -936px; }
+	}
+	
+	@keyframes worried-y {
+	100% { background-position-y: -360px; }
+	}
+	
+</style> 
+</head>
+<body>
+	<div class="base">
+	<div class="left-side">		
+	</div>
+	<div class="right-side">			
+	</div>
+	</div>
+	<div class="boxes">
+			<img src="img/boxes.png" width="320" height="300">
+	</div>
+	<div class="yes">
+		<img src="img/yes-btn.png" width="150" height="120">
+	</div>
+	<div id="sad">
+	</div>
+	<div id="worried">
+	</div>
+	<div id="happy">			
+	</div>
+	<div id="agreed">			
+	</div>
+	<div class="no">
+		<img src="img/no-btn.png" width="150" height="120">
+	</div>
+</body>
+</html>
